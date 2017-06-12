@@ -6,4 +6,9 @@ var _ = require('underscore');
 constant = require('../../constant');
 var superAdminStatus = 10;
 
+router.get('/', (req, res, next) => {
+    debug(req.query)
+    res.send({ "success": true, "api": "admin" }).status(200);
+});
+
 module.exports = router;
