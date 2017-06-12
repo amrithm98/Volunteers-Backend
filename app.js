@@ -16,7 +16,7 @@ var app = express();
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://v-4-volunteers.firebaseio.com"
+    databaseURL: config.firebase.databaseURL
 });
 
 app.use(cors())
