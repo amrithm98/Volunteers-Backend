@@ -1,5 +1,5 @@
 var admin = require("firebase-admin");
-var serviceAccount = require("firebase.json");
+var serviceAccount = require("./firebase.json");
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
