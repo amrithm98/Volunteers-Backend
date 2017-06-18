@@ -1,10 +1,10 @@
 "use strict";
 
-//Primary key :UID
+//Foreign key :adminId --auto gen by sequilize
 
 module.exports = function(sequelize, DataTypes) {
 
-    var Admin = sequelize.define("admin", {
+    var Event = sequelize.define("event", {
 
         name: DataTypes.STRING,
 
@@ -24,5 +24,5 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    return Admin;
+    return Event;
 };
