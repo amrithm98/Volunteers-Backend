@@ -5,7 +5,10 @@ var debug = require('debug')('admin');
 var _ = require('underscore');
 constant = require('../../constant');
 var superAdminStatus = 10;
+
 router.use('/auth', require('./auth'));
+router.use('/event', require('./event'));
+
 
 router.get('/', (req, res, next) => {
     debug(req.query)

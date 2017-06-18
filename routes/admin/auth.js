@@ -86,7 +86,7 @@ router.post('/login', function(req, res, next) {
 
 router.post('/register', (req, res, next) => {
     req.body.registered = true;
-    Admin.update(_.pick(req.body, 'phone','collegeId','registered'), {
+    Admin.update(_.pick(req.body, 'phone','college','registered'), {
         where: {
             uid: req.uid
         }
