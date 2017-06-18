@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
         uid: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: true,
+            primaryKey:true
         },
         email: {
             type: DataTypes.STRING,
