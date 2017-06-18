@@ -10,8 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         {
         classMethods: {
             associate: function(models) {
-                models.publicity.belongsTo(models.event);
-                models.event.hasOne(models.publicity);
+          
             }
         }
 

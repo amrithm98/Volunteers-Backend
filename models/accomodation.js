@@ -10,8 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         {
         classMethods: {
             associate: function(models) {
-                models.accomodation.hasOne(models.event);
-        		models.event.belongsTo(models.accomodation);
+                
             }
         }
 
