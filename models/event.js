@@ -7,10 +7,13 @@ module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("event", {
 
         name: DataTypes.STRING,
-
+        date:DataTypes.STRING,
+        regFee:DataTypes.INTEGER,
+        time:DataTypes.STRING,
         id:{
-            type:DataTypes.INTEGER
-            unique:true
+            type:DataTypes.INTEGER,
+            unique:true,
+            primaryKey:true,
             autoIncrement: true
         },
     }, 
