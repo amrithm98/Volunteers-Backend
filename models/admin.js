@@ -24,7 +24,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             defaultValue: 0
         },
-        eventMail: DataTypes.STRING
+        eventMail: DataTypes.STRING,
+        college:DataTypes.STRING,
+        registered: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
             /*
             Status codes
             ------------

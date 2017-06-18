@@ -19,20 +19,11 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             unique: true
         },
-        accomodation: {
-            type: DataTypes.ENUM,
-            values: ['none', 'male', 'female'],
-            defaultValue: 'none'
-        },
         status: {
             type: DataTypes.ENUM,
             values: ['active', 'banned', 'pending'],
             defaultValue: 'active'
-        },
-        score: {
-            type: DataTypes.DECIMAL,
-            defaultValue: 0
-        },
+        }
         registered: {
             type: DataTypes.BOOLEAN,
             defaultValue: false
