@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         date:DataTypes.STRING,
         regFee:DataTypes.INTEGER,
         time:DataTypes.STRING,
-        eventId:{
+        id:{
             type:DataTypes.INTEGER,
             unique:true,
             primaryKey:true,
