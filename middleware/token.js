@@ -50,7 +50,7 @@ module.exports = function(req, res, next) {
     } else {
         admin.auth().verifyIdToken(idToken)
             .then(function(decodedToken) {
-
+                debug('verification')
                 req.uid = decodedToken.uid;
 
                 req.profile = decodedToken;
@@ -68,7 +68,7 @@ module.exports = function(req, res, next) {
                     }).then(admin => {
                         if (admin && admin.status) {
                             req.admin = admin;
-                            if (req.url.startsWith('/volunteer-admin/volunteer')) {
+                            if (req.url.startsWith('/volunteer-admin/')) {
                                 if (req.admin.status >= 0)
                                     return next();
                             } else

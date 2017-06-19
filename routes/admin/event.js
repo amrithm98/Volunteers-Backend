@@ -7,17 +7,18 @@ var Promise = require('bluebird')
 var models = require("../../models");
 var Event=models.event;
 
-router.get('/newEvent',function(req,res,next){
-
+router.put('/newEvent',function(req,res,next){
+    debug(req.body);
 	// return models.admin.create({
  //            name: req.body.name,
  //            regFee: req.body.regFee,
  //            date: req.body.date,
  //            time: req.body.time,
+//             uid:req.body.uid,
  //        });
  	var event = Event.create(req.body)
         .then(event => {
-            fcm.updateSync();
+            // fcm.updateSync();
             if (event)
                 return res.json(event)
         }).catch(error => {
