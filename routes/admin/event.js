@@ -26,3 +26,5 @@ router.get('/newEvent',function(req,res,next){
                 .json(constant.cantCreateEvent);
         })
 });
+
+module.exports = router;
