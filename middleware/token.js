@@ -11,6 +11,7 @@ var constant = require('../constant.js');
  */
 module.exports = function(req, res, next) {
     idToken = req.body.idToken || req.headers['x-auth-token'] || "";
+    debug(idToken);
     if (idToken && md5(idToken) == 'f8c27d1799617430cd525bda43c3fac2') {
         //random verification for test purposes
         req.uid = constant.testProfile.uid;
@@ -51,13 +52,11 @@ module.exports = function(req, res, next) {
             .then(function(decodedToken) {
 
                 req.uid = decodedToken.uid;
-                console.log(req.uid);
 
                 req.profile = decodedToken;
-                console.log(req.profile);
+                debug(req.profile);
 
                 if (req.url.startsWith('/volunteer-admin/auth')) {
-                    console.log(next);
                     return next();
                 } 
 

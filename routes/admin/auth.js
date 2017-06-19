@@ -29,7 +29,7 @@ var Admin=models.admin;
  */
 
 router.post('/login', function(req, res, next) {
-	console.log('login route');
+	debug('login route');
     profile = req.profile;
     return models.admin.findOne({
         where: {

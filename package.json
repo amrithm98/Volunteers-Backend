@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "start": "nodemon ./bin/www",
+        "start": "DEBUG=admin,middle,app,Volunteers:server  nodemon ./bin/www",
         "test": "mocha"
     },
     "dependencies": {

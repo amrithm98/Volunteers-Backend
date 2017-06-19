@@ -11,7 +11,7 @@ router.use('/event', require('./event'));
 
 
 router.get('/', (req, res, next) => {
-    debug(req.query)
+    debug(req.query);
     res.send({ "success": true, "api": "admin" }).status(200);
 });
 

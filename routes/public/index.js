@@ -16,6 +16,7 @@ var router = require('express').Router();
  */
 
 router.get('/', (req, res, next) => {
+	debug(req.query)
     var obj = { success: true, api: "public" }
     res.send(obj).status(200);
 });

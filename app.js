@@ -14,6 +14,7 @@ var config = require('./config')()
 var debug = require('debug')('app');
 var app = express();
 
+
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: config.firebase.databaseURL
@@ -29,6 +30,10 @@ app.use(helmet());
 app.use(token);
 app.use('/', router);
 
+if(!debug.enable)
+{
+    debug('Server started')
+}
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -41,6 +46,7 @@ app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
+
     res.locals.error = err;
     // render the error page
     res.status(err.status || 500);
