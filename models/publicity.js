@@ -9,7 +9,6 @@ module.exports = function(sequelize, DataTypes) {
         classMethods: {
             associate: function(models) {
                 models.event.belongsToMany(models.admin, {
-                    as:'pub',
                     through: Publicity
                 });
                 models.admin.belongsToMany(models.event, {

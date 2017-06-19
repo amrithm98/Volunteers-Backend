@@ -10,7 +10,12 @@ module.exports = function(sequelize, DataTypes) {
         {
         classMethods: {
             associate: function(models) {
-                
+                models.event.belongsToMany(models.admin, {
+                    through: FoodVenue
+                });
+                models.admin.belongsToMany(models.event, {
+                    through: FoodVenue
+                });
             }
         }
 
