@@ -7,6 +7,38 @@ var Promise = require('bluebird')
 var models = require("../../models");
 var Event=models.event;
 
+/**
+ * @api {post} /volunteer-admin/event/newEvent Create New Evenet
+ * @apiName New Event
+ * @apiGroup Admin
+ *
+ * @apiParam {String} idToken Id token from login.
+ * @apiParam {String} name Event Name
+ * @apiParam {String} regFee Event Fee
+ * @apiParam {String} date Event Date
+ * @apiParam {String} time Event Time
+ * @apiParam {String} adminUid UID of Event Admin
+ 
+ * @apiSuccessExample {json} After Event Created
+{
+  "id": 1,
+  "name": "Aura 17",
+  "regFee": "FREE",
+  "date": "August 10",
+  "time": "Full day",
+  "adminUid": "ey3ulcBqwXfgS4XypEOEUrReqkL2",
+  "updatedAt": "2017-06-20T02:32:47.000Z",
+  "createdAt": "2017-06-20T02:32:47.000Z"
+}
+ *
+ * @apiErrorExample {json} error
+{
+    code: 1,
+    data: error,
+    message: "Auth Error"
+}
+ */
+
 router.put('/newEvent',function(req,res,next){
     debug(req.body);
 	// return models.admin.create({

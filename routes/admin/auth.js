@@ -13,9 +13,14 @@ var Admin=models.admin;
  *
  * @apiParam {String} idToken Id token from login.
  *
- * @apiSuccessExample {json} beforeRegister
+ * @apiSuccessExample {json} After Register
 {
   "name": "John Doe",
+  "uid":cJ2crx0lpVSbvPs1VbhU0BHgItE2,
+  "email":johndoe@gmail.com,
+  "phone":9876543210,
+  "college":MIT,
+  "registered":True,
   "picture": "https://lh6.googleusercontent.com/-LdIUNFJBriQ/AAAAAAAAAAI/AAAAAAAAAvI/HUwlqct9yJY/photo.jpg",
   "status": 10
 }
@@ -59,29 +64,26 @@ router.post('/login', function(req, res, next) {
 });
 
 /**
- * @api {post} /student/register Register Student
- * @apiDescription Register student by adding phone number, collegeId and accomodation request
- * @apiGroup Student
+ * @api {post} /volunteer-admin/auth/register Register an Admin
+ * @apiName Register
+ * @apiGroup Admin
+ *
+ * @apiParam {String} idToken Id token from login.
  * @apiParam {String} phone Phone Number
- * @apiParam {Enum=['none','male','female']} accomodation=none Whether accomodation is needed
- * @apiParam {id} collegeId college Id of the related college
+ * @apiParam {String} college CollegeName
+ * @apiParam {String} registered True
+
  *
- * @apiExample request
- *{
-      "phone":456987132,
-      "collegeId":2
-  }
+ * @apiSuccessExample {json} Success
+{
+  "Registered"
+}
  *
- * @apiSuccessExample success
- * "registered"
- * 
- * @apiErrorExample error
- * {
-      "code": 13,
-      "message": "Could not register student"
-    }
- * @apiUse tokenErrors
- *  
+ * @apiErrorExample {json} error
+{
+    code: 13,
+    message: "Could not register student"
+}
  */
 
 router.post('/register', (req, res, next) => {
