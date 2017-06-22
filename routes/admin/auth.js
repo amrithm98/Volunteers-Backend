@@ -6,6 +6,7 @@ var _ = require('underscore')
 var Promise = require('bluebird')
 var models = require("../../models");
 var Admin=models.admin;
+var fcm=require('../fcm')   
 /**
  * @api {post} /volunteer-admin/auth/login Login an Admin
  * @apiName Login
@@ -52,6 +53,8 @@ router.post('/login', function(req, res, next) {
             email: profile.email
         });
     }).then(user => {
+        debug('fcm');
+        fcm.notification("Welcome","Welcome");
         res.json(user);
     }).catch(function(error) {
         res.status(500).send({
@@ -93,6 +96,7 @@ router.post('/register', (req, res, next) => {
             uid: req.uid
         }
     }).then(result => {
+        fcm.
         res.json("Registered");
     }).catch(error => {
         res.status(400).json(constant.registerFailed);

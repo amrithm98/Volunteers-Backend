@@ -54,7 +54,7 @@ var wrapper = {
     },
 
     notification(title, body) {
-        var message = {
+        var message = { 
                 to: '/topics/volunteers' ,
                 notification: {
                     'title': title,
