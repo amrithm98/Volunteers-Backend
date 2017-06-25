@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey:true,
             autoIncrement: true
         },
-        //adminId also
+        //adminUid also
     }, 
         {
         classMethods: {
