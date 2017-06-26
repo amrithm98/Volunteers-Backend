@@ -5,7 +5,7 @@ var admin = require("firebase-admin");
 var _ = require('underscore')
 var Promise = require('bluebird')
 var models = require("../../models");
-var Event=models.event;
+var Event = models.event;
 
 /**
  * @api {post} /volunteer-admin/event/newEvent Create New Evenet
@@ -39,16 +39,16 @@ var Event=models.event;
 }
  */
 
-router.put('/newEvent',function(req,res,next){
+router.put('/newEvent', function(req, res, next) {
     debug(req.body);
-	// return models.admin.create({
- //            name: req.body.name,
- //            regFee: req.body.regFee,
- //            date: req.body.date,
- //            time: req.body.time,
-//             uid:req.body.uid,
- //        });
- 	var event = Event.create(req.body)
+    // return models.admin.create({
+    //            name: req.body.name,
+    //            regFee: req.body.regFee,
+    //            date: req.body.date,
+    //            time: req.body.time,
+    //             uid:req.body.uid,
+    //        });
+    var event = Event.create(req.body)
         .then(event => {
             // fcm.updateSync();
             if (event)
@@ -89,12 +89,12 @@ router.put('/newEvent',function(req,res,next){
 }
  */
 
-router.post('/myEvents',function(req,res,next){
-  debug(req.body);
+router.post('/myEvents', function(req, res, next) {
+    debug(req.body);
     Event.findAll({
-      where:{
-        adminUid:req.body.adminUid
-      }
+        where: {
+            adminUid: req.body.adminUid
+        }
     }).then((list) => {
         res.json(list);
     }).catch(error => {
