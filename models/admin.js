@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             defaultValue: 0
         },
-        college:DataTypes.STRING,
+        collegeId:DataTypes.INTEGER,
         registered: {
             type: DataTypes.BOOLEAN,
             defaultValue: false            

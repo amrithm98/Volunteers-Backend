@@ -7,6 +7,7 @@ var Promise = require('bluebird')
 var models = require("../../models");
 var Admin=models.admin;
 var fcm=require('../fcm')   
+
 /**
  * @api {post} /volunteer-admin/auth/login Login an Admin
  * @apiName Login
@@ -73,7 +74,7 @@ router.post('/login', function(req, res, next) {
  *
  * @apiParam {String} idToken Id token from login.
  * @apiParam {String} phone Phone Number
- * @apiParam {String} college CollegeName
+ * @apiParam {Integer} collegeId CollegeName
  * @apiParam {String} registered True
 
  *
@@ -96,7 +97,6 @@ router.post('/register', (req, res, next) => {
             uid: req.uid
         }
     }).then(result => {
-        fcm.
         res.json("Registered");
     }).catch(error => {
         res.status(400).json(constant.registerFailed);
