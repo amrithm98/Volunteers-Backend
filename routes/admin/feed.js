@@ -4,7 +4,7 @@ var models = require('../../models');
 var constant = require('../../constant');
 var fcm = require('../fcm');
 var Promise = require('bluebird');
-
+var Feed = models.feed;
 /**
  * @api {put} /volunteer-admin/feed/new New Feed
  * @apiDescription New Feed
@@ -13,11 +13,13 @@ var Promise = require('bluebird');
  * @apiParam {string} adminUid Admin UID
  * @apiParam {string} eventId Event's ID
  * @apiSuccessExample success
- * {
-  "id": 8,
-  "name": "New College",
-  "updatedAt": "2017-03-11T18:28:33.000Z",
-  "createdAt": "2017-03-11T18:28:33.000Z"
+{
+    "id": 1,
+    "desc": "Guys! Let's get to work.",
+    "adminUid": "ey3ulcBqwXfgS4XypEOEUrReqkL2",
+    "eventId": "2",
+    "updatedAt": "2017-06-26T02:53:00.000Z",
+    "createdAt": "2017-06-26T02:53:00.000Z"
 }
 
     @apiErrorExample error
@@ -25,7 +27,25 @@ var Promise = require('bluebird');
  */
 
 router.put('/new', (req, res, next) => {
-    models.feed.create(req.body)
+    Feed.create(req.body)
+        .then(result => {
+            return res.json(result);
+        }).catch(error => {
+            constant.cantCreateFeed.data = error;
+            return res.status(400).json(constant.cantCreateFeed);
+        })
+});
+
+router.post('/eventFeeds', (req, res, next) => {
+    Feed.findAll({
+            limit: 10,
+            where: {
+                eventId: req.body.eventId
+            },
+            order: [
+                ['updatedAt', 'DESC']
+            ]
+        })
         .then(result => {
             return res.json(result);
         }).catch(error => {

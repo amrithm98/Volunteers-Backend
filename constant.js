@@ -106,6 +106,10 @@ module.exports = {
     cantCreateFeed: {
         code: 23,
         message: "Could not Create Feed"
+    },
+    cantFetchFeed: {
+        code: 24,
+        message: "Could not Fetch Feed"
     }
 
 }
