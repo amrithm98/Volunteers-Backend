@@ -8,7 +8,8 @@ var superAdminStatus = 10;
 
 router.use('/auth', require('./auth'));
 router.use('/event', require('./event'));
-router.use('/college',require('./college'));
+router.use('/college', require('./college'));
+router.use('/feed', require('./feed'));
 
 router.get('/', (req, res, next) => {
     debug(req.query);

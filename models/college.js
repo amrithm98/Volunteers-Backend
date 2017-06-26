@@ -2,7 +2,10 @@
 
 module.exports = function(sequelize, DataTypes) {
     var Colleges = sequelize.define("college", {
-        name: DataTypes.STRING
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     }, {
         classMethods: {
             associate: function(models) {

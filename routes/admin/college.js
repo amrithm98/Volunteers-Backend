@@ -23,6 +23,7 @@ var Promise = require('bluebird');
  */
 
 router.put('/', (req, res, next) => {
+    debug(req.body)
     models.college.create(req.body)
         .then(result => {
             return res.json(result);
