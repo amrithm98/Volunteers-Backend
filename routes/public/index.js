@@ -1,5 +1,5 @@
 var router = require('express').Router();
-
+router.use('/college', require('./college'));
 /**
  * @api {get} / Simple Get Request
  * @apiName Public Get
@@ -16,7 +16,7 @@ var router = require('express').Router();
  */
 
 router.get('/', (req, res, next) => {
-	debug(req.query)
+    debug(req.query)
     var obj = { success: true, api: "public" }
     res.send(obj).status(200);
 });
