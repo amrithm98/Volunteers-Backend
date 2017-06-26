@@ -60,4 +60,47 @@ router.put('/newEvent',function(req,res,next){
         })
 });
 
+/**
+ * @api {post} /volunteer-admin/event/myEvents Get All events by Admin
+ * @apiName Admin Events
+ * @apiGroup Admin
+ *
+ * @apiParam {String} idToken Id token from login.
+ * @apiParam {String} adminUid UID of Event Admin
+ 
+ * @apiSuccessExample {json} Events List 
+{
+  {
+    "id": 1,
+    "name": "Aura 17",
+    "regFee": "FREE",
+    "date": "August 10",
+    "time": "Full day",
+    "adminUid": "ey3ulcBqwXfgS4XypEOEUrReqkL2",
+    "updatedAt": "2017-06-20T02:32:47.000Z",
+    "createdAt": "2017-06-20T02:32:47.000Z"
+  }
+}
+ *
+ * @apiErrorExample {json} error
+{
+    code: 5,
+    message: "Could not fetch events"
+}
+ */
+
+router.post('/myEvents',function(req,res,next){
+  debug(req.body);
+    Event.findAll({
+      where:{
+        adminUid:req.body.adminUid
+      }
+    }).then((list) => {
+        res.json(list);
+    }).catch(error => {
+        constant.cantfetchEvent.data = error;
+        res.status(400).json(constant.cantfetchEvent)
+    });
+});
+
 module.exports = router;

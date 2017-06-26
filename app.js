@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(token);
 app.use('/', router);
-
+    
 if(!debug.enable)
 {
     debug('Server started')

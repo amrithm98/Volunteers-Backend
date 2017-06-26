@@ -12,7 +12,7 @@ var wrapper = {
                 'type': 'EVENT_SYNC'
             }
         };
-
+        
         var promise = new Promise((resolve,reject)=>{
             fcm.send(message, (err, res) => {
                 if (err){

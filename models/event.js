@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         name: DataTypes.STRING,
         date:DataTypes.STRING,
         regFee:DataTypes.INTEGER,
+        desc:DataTypes.STRING,
         time:DataTypes.STRING,
         id:{
             type:DataTypes.INTEGER,
