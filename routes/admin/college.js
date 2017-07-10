@@ -4,7 +4,7 @@ var models = require('../../models');
 var constant = require('../../constant');
 var fcm = require('../fcm');
 var Promise = require('bluebird');
-var Admin = require('../../models/admin');
+var _ = require('underscore')
 
 /**
  * @api {put} /volunteer-admin/college/ add college
@@ -57,17 +57,18 @@ router.put('/', (req, res, next) => {
     {"code":22,"message":"Could not put college"}
 */
 router.post('/people', (req, res, next) => {
-    Admin.findAll({
+    models.admin.findAll({
             where: {
-                collegeId: req.collegeId
+                collegeId: req.body.collegeId
             }
         })
         .then(result => {
-            // var admins = _.map(result, function(ob) {
-            //     return _.pick(ob, 'id', 'name');
-            // });
-            return res.json(result);
+            var data = _.map(result, function(ob) {
+                return _.pick(ob, 'uid', 'name', 'email', 'picture', 'phone');
+            });
+            return res.json(data);
         }).catch(error => {
+            debug(error)
             constant.cantFetchCollege = error;
             return res.status(400).json(constant.cantFetchCollege);
         })
