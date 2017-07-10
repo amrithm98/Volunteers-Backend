@@ -6,6 +6,7 @@ var _ = require('underscore')
 var Promise = require('bluebird')
 var models = require("../../models");
 var Event = models.event;
+var fcm = require('../fcm')
 
 /**
  * @api {post} /volunteer-admin/event/newEvent Create New Evenet
@@ -52,7 +53,10 @@ router.put('/newEvent', function(req, res, next) {
         .then(event => {
             // fcm.updateSync();
             if (event)
+            {
+                fcm.notification(req.body.name, "An Event Was Created");
                 return res.json(event)
+            }
         }).catch(error => {
             constant.cantCreateEvent.data = error;
             return res.status(400)

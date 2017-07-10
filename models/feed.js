@@ -5,9 +5,11 @@
 module.exports = function(sequelize, DataTypes) {
 
     var Feed = sequelize.define("feed", {
-        desc: DataTypes.STRING
-            //adminUid also
-            //eventId also
+        desc: DataTypes.STRING,
+        ownerName: DataTypes.STRING,
+        ownerImage: DataTypes.STRING,
+        //adminUid also
+        //eventId also
     }, {
         classMethods: {
             associate: function(models) {

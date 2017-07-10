@@ -5,8 +5,8 @@ var admin = require("firebase-admin");
 var _ = require('underscore')
 var Promise = require('bluebird')
 var models = require("../../models");
-var Admin=models.admin;
-var fcm=require('../fcm')   
+var Admin = models.admin;
+var fcm = require('../fcm')
 
 /**
  * @api {post} /volunteer-admin/auth/login Login an Admin
@@ -36,7 +36,7 @@ var fcm=require('../fcm')
  */
 
 router.post('/login', function(req, res, next) {
-	debug('login route');
+    debug('login route');
     profile = req.profile;
     return models.admin.findOne({
         where: {
@@ -55,7 +55,7 @@ router.post('/login', function(req, res, next) {
         });
     }).then(user => {
         debug('fcm');
-        fcm.notification("Welcome","Welcome");
+        fcm.notification("Welcome", "Welcome");
         res.json(user);
     }).catch(function(error) {
         res.status(500).send({
@@ -92,7 +92,7 @@ router.post('/login', function(req, res, next) {
 
 router.post('/register', (req, res, next) => {
     req.body.registered = true;
-    Admin.update(_.pick(req.body, 'phone','college','registered'), {
+    Admin.update(_.pick(req.body, 'phone', 'collegeId', 'registered'), {
         where: {
             uid: req.uid
         }
