@@ -4,10 +4,10 @@
 module.exports = function(sequelize, DataTypes) {
 
     var Registration = sequelize.define("registration", {
-        eventId:DataTypes.STRING,
-        uid:DataTypes.STRING
-    }, 
-        {
+        eventId: DataTypes.STRING,
+        uid: DataTypes.STRING,
+        work: DataTypes.STRING
+    }, {
         classMethods: {
             associate: function(models) {
                 models.event.belongsToMany(models.admin, {
