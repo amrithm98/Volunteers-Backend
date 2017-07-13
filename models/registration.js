@@ -6,17 +6,12 @@ module.exports = function(sequelize, DataTypes) {
     var Registration = sequelize.define("registration", {
         eventId: DataTypes.STRING,
         uid: DataTypes.STRING,
-        work: DataTypes.STRING
+        work: DataTypes.STRING,
+        completition: DataTypes.INTEGER,
+        access: DataTypes.INTEGER
     }, {
         classMethods: {
-            associate: function(models) {
-                models.event.belongsToMany(models.admin, {
-                    through: Registration
-                });
-                models.admin.belongsToMany(models.event, {
-                    through: Registration
-                });
-            }
+
         }
 
     });
