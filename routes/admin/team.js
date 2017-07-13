@@ -30,9 +30,11 @@ router.put('/:id/add', (req, res, next) => {
         default:
             return res.json({ "msg": "Incorrect Domain" });
     }
+    debug(Model);
     Model.create(req.body).then(team => {
         if (team) {
             fcm.notification("New Crew Member", "A Volunteer Was Added");
+            debug("Added successfully");
             return res.json("AddedToTeam");
         }
     }).catch(error => {
@@ -47,3 +49,6 @@ router.put('/:id/add', (req, res, next) => {
     //     })
 
 });
+
+// router.get('/')
+module.exports = router;

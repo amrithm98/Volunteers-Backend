@@ -7,9 +7,8 @@ module.exports = function(sequelize, DataTypes) {
         eventId: DataTypes.STRING,
         uid: DataTypes.STRING,
         work: DataTypes.STRING,
-        completition: DataTypes.INTEGER,
+        completion: DataTypes.INTEGER,
         access: DataTypes.INTEGER
-
     }, {
         classMethods: {
             // associate: function(models) {

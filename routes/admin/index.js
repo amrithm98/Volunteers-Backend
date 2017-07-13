@@ -10,6 +10,7 @@ router.use('/auth', require('./auth'));
 router.use('/event', require('./event'));
 router.use('/college', require('./college'));
 router.use('/feed', require('./feed'));
+router.use('/team', require('./team'));
 
 router.get('/', (req, res, next) => {
     debug(req.query);
