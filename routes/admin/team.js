@@ -89,4 +89,39 @@ router.get('/:id/:eventId', (req, res, next) => {
 
 
 });
+
+router.post('/:id/:eventVoltId', (req, res, next) => {
+    var team = req.params.id;
+    var eventID = req.params.eventVoltId;
+    var Model = "";
+    switch (team) {
+        case "Accomodation":
+            Model = models.accomodation;
+            break;
+        case "Food_and_Venue":
+            Model = models.foodVenue;
+            break;
+        case "Publicity":
+            Model = models.publicity;
+            break;
+        case "Registration":
+            Model = models.registration;
+            break;
+        case "Sessions":
+            Model = models.sessions;
+            break;
+        case "Sponsorship":
+            Model = models.sponsorship;
+            break;
+        default:
+            return res.json({ "msg": "Incorrect Team Name" });
+    }
+    Model.update({ completion: 1 }, { where: { id: eventID } }).then(result => {
+        if (result) {
+            res.json("Success");
+        }
+    }).catch(error => {
+        res.status(400).json(error);
+    })
+});
 module.exports = router;

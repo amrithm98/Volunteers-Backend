@@ -103,4 +103,17 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+router.get('/:uid', (req, res, next) => {
+    var uid = req.params.uid;
+    models.admin.findOne({
+        where: {
+            uid: uid
+        }
+    }).then(result => {
+        res.json(result);
+    }).catch(error => {
+        res.status(400).json(error);
+    })
+});
+
 module.exports = router;
