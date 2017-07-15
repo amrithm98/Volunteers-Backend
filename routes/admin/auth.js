@@ -115,4 +115,11 @@ router.post('/:uid', (req, res, next) => {
     })
 });
 
+router.post('/fcm', (req, res, next) => {
+    var topic = req.body.topic;
+    var message = req.body.msg;
+    fcm.notification(topic, message);
+    res.json("Success")
+})
+
 module.exports = router;
