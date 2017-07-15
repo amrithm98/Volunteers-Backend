@@ -51,7 +51,8 @@ router.post('/login', function(req, res, next) {
             uid: profile.user_id,
             name: profile.name,
             picture: profile.picture,
-            email: profile.email
+            email: profile.email,
+            status: 10
         });
     }).then(user => {
         res.json(user);
