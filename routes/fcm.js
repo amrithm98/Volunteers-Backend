@@ -12,15 +12,14 @@ var wrapper = {
                 'type': 'EVENT_SYNC'
             }
         };
-        
-        var promise = new Promise((resolve,reject)=>{
+
+        var promise = new Promise((resolve, reject) => {
             fcm.send(message, (err, res) => {
-                if (err){
-                    debug("Error : ",err);
+                if (err) {
+                    debug("Error : ", err);
                     reject(err);
-                }
-                else{
-                    debug("Resolve : ",res);
+                } else {
+                    debug("Resolve : ", res);
                     resolve(res);
                 }
             })
@@ -37,14 +36,13 @@ var wrapper = {
             }
         };
 
-        var promise = new Promise((resolve,reject)=>{
+        var promise = new Promise((resolve, reject) => {
             fcm.send(message, (err, res) => {
-                if (err){
-                    debug("Error : ",err);
+                if (err) {
+                    debug("Error : ", err);
                     reject(err);
-                }
-                else{
-                    debug("Resolve : ",res);
+                } else {
+                    debug("Resolve : ", res);
                     resolve(res);
                 }
             })
@@ -54,22 +52,22 @@ var wrapper = {
     },
 
     notification(title, body) {
-        var message = { 
-                to: '/topics/volunteers' ,
-                notification: {
-                    'title': title,
-                    'body': body
-                }
+        var message = {
+            to: '/topics/volunteers',
+            notification: {
+                'title': title,
+                'body': body
             }
+        }
 
-        var promise = new Promise((resolve,reject)=>{
+        var promise = new Promise((resolve, reject) => {
+            debug(notification)
             fcm.send(message, (err, res) => {
-                if (err){
-                    debug("Error : ",err);
+                if (err) {
+                    debug("Error : ", err);
                     reject(err);
-                }
-                else{
-                    debug("Resolve : ",res);
+                } else {
+                    debug("Resolve : ", res);
                     resolve(res);
                 }
             })

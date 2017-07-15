@@ -93,7 +93,7 @@ router.post('/register', (req, res, next) => {
     req.body.registered = true;
     Admin.update(_.pick(req.body, 'phone', 'collegeId', 'registered'), {
         where: {
-            uid: req.uid
+            uid: req.uid    
         }
     }).then(result => {
         fcm.notification("Registration", "Successfully Registered");
@@ -121,6 +121,6 @@ router.post('/fcm', (req, res, next) => {
     var message = req.body.msg;
     fcm.notification(topic, message);
     res.json("Success")
-})
+});
 
 module.exports = router;
