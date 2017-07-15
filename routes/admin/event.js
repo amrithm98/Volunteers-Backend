@@ -58,6 +58,7 @@ router.put('/newEvent', function(req, res, next) {
                 return res.json(event)
             }
         }).catch(error => {
+		debug(error);
             constant.cantCreateEvent.data = error;
             return res.status(400)
                 .json(constant.cantCreateEvent);
