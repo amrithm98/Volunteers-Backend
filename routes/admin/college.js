@@ -23,7 +23,7 @@ var _ = require('underscore')
     {"code":22,"message":"Could not put college"}
 */
 
-router.put('/', (req, res, next) => {
+router.post('/', (req, res, next) => {
     debug(req.body)
     models.college.create(req.body)
         .then(result => {
