@@ -5,6 +5,8 @@ module.exports = function(sequelize, DataTypes) {
 
     var Accomodation = sequelize.define("accomodation", {
         eventId: DataTypes.STRING,
+        name: DataTypes.STRING,
+        picture: DataTypes.STRING,
         uid: DataTypes.STRING,
         work: DataTypes.STRING,
         completion: DataTypes.INTEGER,

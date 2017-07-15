@@ -54,8 +54,6 @@ router.post('/login', function(req, res, next) {
             email: profile.email
         });
     }).then(user => {
-        debug('fcm');
-        fcm.notification("Welcome", "Welcome");
         res.json(user);
     }).catch(function(error) {
         res.status(500).send({
@@ -97,13 +95,14 @@ router.post('/register', (req, res, next) => {
             uid: req.uid
         }
     }).then(result => {
+        fcm.notification("Registration", "Successfully Registered");
         res.json("Registered");
     }).catch(error => {
         res.status(400).json(constant.registerFailed);
     });
 });
 
-router.get('/:uid', (req, res, next) => {
+router.post('/:uid', (req, res, next) => {
     var uid = req.params.uid;
     models.admin.findOne({
         where: {

@@ -6,6 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     var Sponsorship = sequelize.define("sponsorship", {
         eventId: DataTypes.STRING,
         uid: DataTypes.STRING,
+        name: DataTypes.STRING,
+        picture: DataTypes.STRING,
         work: DataTypes.STRING,
         completion: DataTypes.INTEGER,
         access: DataTypes.INTEGER

@@ -36,10 +36,11 @@ router.put('/:id/add', (req, res, next) => {
         if (team) {
             fcm.notification("New Crew Member", "A Volunteer Was Added");
             debug("Added successfully");
-            return res.json("AddedToTeam");
+            res.json("AddedToTeam");
         }
     }).catch(error => {
-        return res.status(400).json(constant.cantCreateFeed)
+        debug(error)
+        res.status(400).json(constant.cantCreateFeed)
     });
     // Feed.create(req.body)
     //     .then(result => {
@@ -51,7 +52,42 @@ router.put('/:id/add', (req, res, next) => {
 
 });
 
-router.get('/:id/:eventId', (req, res, next) => {
+router.post('/:id/update', (req, res, next) => {
+    var team = req.params.id;
+    var Model = "";
+    switch (team) {
+        case "Accomodation":
+            Model = models.accomodation;
+            break;
+        case "Food_and_Venue":
+            Model = models.foodVenue;
+            break;
+        case "Publicity":
+            Model = models.publicity;
+            break;
+        case "Registration":
+            Model = models.registration;
+            break;
+        case "Sessions":
+            Model = models.sessions;
+            break;
+        case "Sponsorship":
+            Model = models.sponsorship;
+            break;
+        default:
+            return res.json({ "msg": "Incorrect Team Name" });
+    }
+    Model.update({ "completion": 1 }, { where: { id: req.body.id } }).then(result => {
+        debug("Here")
+        if (result) {
+            res.json("Success");
+        }
+    }).catch(error => {
+        res.status(400).json(error);
+    })
+});
+
+router.post('/:id/:eventId', (req, res, next) => {
     var team = req.params.id;
     var eventID = req.params.eventId;
     var Model = "";
@@ -60,6 +96,7 @@ router.get('/:id/:eventId', (req, res, next) => {
             Model = models.accomodation;
             break;
         case "Food_and_Venue":
+        case "Food%20and%20Venue":
             Model = models.foodVenue;
             break;
         case "Publicity":
@@ -82,46 +119,13 @@ router.get('/:id/:eventId', (req, res, next) => {
             eventId: eventID
         }
     }).then(result => {
-        return res.json(result);
+        res.json(result);
     }).catch(error => {
-        return res.status(400).json(constant.cantCreateFeed)
+        res.status(400).json(constant.cantCreateFeed)
     });
 
 
 });
 
-router.post('/:id/:eventVoltId', (req, res, next) => {
-    var team = req.params.id;
-    var eventID = req.params.eventVoltId;
-    var Model = "";
-    switch (team) {
-        case "Accomodation":
-            Model = models.accomodation;
-            break;
-        case "Food_and_Venue":
-            Model = models.foodVenue;
-            break;
-        case "Publicity":
-            Model = models.publicity;
-            break;
-        case "Registration":
-            Model = models.registration;
-            break;
-        case "Sessions":
-            Model = models.sessions;
-            break;
-        case "Sponsorship":
-            Model = models.sponsorship;
-            break;
-        default:
-            return res.json({ "msg": "Incorrect Team Name" });
-    }
-    Model.update({ completion: 1 }, { where: { id: eventID } }).then(result => {
-        if (result) {
-            res.json("Success");
-        }
-    }).catch(error => {
-        res.status(400).json(error);
-    })
-});
+
 module.exports = router;
