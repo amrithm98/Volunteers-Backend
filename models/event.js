@@ -7,19 +7,18 @@ module.exports = function(sequelize, DataTypes) {
     var Event = sequelize.define("event", {
 
         name: DataTypes.STRING,
-        date:DataTypes.STRING,
-        regFee:DataTypes.INTEGER,
-        desc:DataTypes.STRING,
-        time:DataTypes.STRING,
-        id:{
-            type:DataTypes.INTEGER,
-            unique:true,
-            primaryKey:true,
+        date: DataTypes.STRING,
+        regFee: DataTypes.INTEGER,
+        desc: DataTypes.STRING,
+        time: DataTypes.STRING,
+        id: {
+            type: DataTypes.INTEGER,
+            unique: true,
+            primaryKey: true,
             autoIncrement: true
         },
         //adminUid also
-    }, 
-        {
+    }, {
         classMethods: {
             associate: function(models) {
                 models.event.belongsTo(models.admin); //Admin is the target model--automatically created a foreign key
@@ -29,5 +28,5 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    return Event;   
+    return Event;
 };

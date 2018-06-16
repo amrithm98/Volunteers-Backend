@@ -58,9 +58,7 @@ module.exports = function(req, res, next) {
 
                 if (req.url.startsWith('/volunteer-admin/auth')) {
                     return next();
-                } 
-
-                else if (req.url.startsWith('/volunteer-admin')) {
+                } else if (req.url.startsWith('/volunteer-admin')) {
                     models.admin.findOne({
                         where: {
                             uid: req.profile.user_id
@@ -80,9 +78,7 @@ module.exports = function(req, res, next) {
                     }).catch(error => {
                         return res.status(401).json(constant.wrongToken);
                     });
-                } 
-
-                else
+                } else
                     return next();
             }).catch((error) => {
                 constant.wrongToken.data = error;

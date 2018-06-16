@@ -29,9 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(helmet());
 app.use(token);
 app.use('/', router);
-    
-if(!debug.enable)
-{
+
+if (!debug.enable) {
     debug('Server started')
 }
 // catch 404 and forward to error handler
