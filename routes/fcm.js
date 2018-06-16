@@ -52,7 +52,11 @@ var wrapper = {
     },
 
     notification(title, body) {
+<<<<<<< HEAD
         debug('Notification')
+=======
+	debug('Login');
+>>>>>>> 8d974d3b1658cca343bd029751c1cee09440aa8e
         var message = {
             to: '/topics/volunteers',
             notification: {
@@ -62,7 +66,6 @@ var wrapper = {
         }
 
         var promise = new Promise((resolve, reject) => {
-            debug(notification)
             fcm.send(message, (err, res) => {
                 if (err) {
                     debug("Error : ", err);

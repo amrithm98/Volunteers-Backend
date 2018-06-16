@@ -117,9 +117,11 @@ router.post('/:uid', (req, res, next) => {
 });
 
 router.post('/fcm', (req, res, next) => {
+ /*   debug('NOTIFICATION');
     var topic = req.body.topic;
     var message = req.body.msg;
-    fcm.notification(topic, message);
+    debug(topic+" "+message);
+    fcm.notification(topic, message);*/
     res.json("Success")
 });
 
